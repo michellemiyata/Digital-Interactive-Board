@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Summer I Turned Pretty - Timeline Map</title>
+  <link rel="stylesheet" href="style.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Touchpoint Modal Overlay -->
+  <div class="modal-overlay" id="touchpoint-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div class="modal-header">
+        <span class="modal-tag" id="modal-track">Route</span>
+        <h2 id="modal-title">Touchpoint Title</h2>
+      </div>
+      <div class="modal-body" id="modal-desc">
+        Detailed description of this touchpoint goes here.
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Storyboard Canvas -->
+  <main class="canvas-board">
+    
+    <div class="board-flow">
+      
+      <!-- Player Profiles Column Floating on Canvas -->
+      <div class="player-column">
+        <!-- Player 1 Persona -->
+        <div class="player-card conrad-card active-card" onclick="highlightTrack('conrad')" id="profile-conrad">
+          <div class="card-header">
+            <div class="avatar persona1-avatar" style="background-image: url('./persona1.png');"></div>
+            <h2>Viewer 1: Gen-Z Superfan</h2>
+          </div>
+          <div class="card-stats">
+            <div class="stat"><span class="label">Age:</span> 16 (Single)</div>
+            <div class="stat"><span class="label">Occ:</span> High School Student</div>
+            <div class="stat"><span class="label">Likes:</span> Fan Edits, 'Shipping', Merch</div>
+            <div class="stat"><span class="label">Watches:</span> TikTok, IG Reels</div>
+            <div class="stat"><span class="label">Reads:</span> Wattpad, YA Tropes</div>
+            <div class="stat"><span class="label">Beliefs:</span> Fast-paced viral drama</div>
+          </div>
+        </div>
+
+        <!-- Player 2 Persona -->
+        <div class="player-card jeremiah-card active-card" onclick="highlightTrack('jeremiah')" id="profile-jeremiah">
+          <div class="card-header">
+            <div class="avatar persona2-avatar" style="background-image: url('./persona2.png');"></div>
+            <h2>Viewer 2: Nostalgia Millennial</h2>
+          </div>
+          <div class="card-stats">
+            <div class="stat"><span class="label">Age:</span> 28 (In a Relationship)</div>
+            <div class="stat"><span class="label">Occ:</span> Marketing Coordinator</div>
+            <div class="stat"><span class="label">Likes:</span> Original Books, Indie Pop</div>
+            <div class="stat"><span class="label">Watches:</span> Amazon Prime, Long-form Video</div>
+            <div class="stat"><span class="label">Reads:</span> Jenny Han Novels, Bookstagram</div>
+            <div class="stat"><span class="label">Beliefs:</span> Escapism & emotional comfort</div>
+          </div>
+        </div>
+
+        <button class="btn-reset" onclick="highlightTrack('all')">Show Both Tracks</button>
+      </div>
+
+      <!-- The Core Matrix Structure -->
+      <div class="matrix-wrapper">
+        
+        <!-- Act Headers (Compressed to 24 cols) -->
+        <div class="time-headers">
+          <div class="act-header act-1" style="grid-column: 1 / 9;">ACT 1: Return to Cousins</div>
+          <div class="act-header act-2" style="grid-column: 9 / 17;">ACT 2: The Love Triangle</div>
+          <div class="act-header act-3" style="grid-column: 17 / 25;">ACT 3: End of Summer</div>
+        </div>
+
+        <div class="grid-container">
+          
+          <!-- Row Labels -->
+          <div class="row-labels">
+            <div class="label-box">Instagram</div>
+            <div class="label-box">TikTok</div>
+            <div class="label-box">Twitter / X</div>
+            <div class="label-box">YouTube Vlogs</div>
+            <div class="label-box">Spotify Playlist</div>
+            <div class="label-box">Substack / Blog</div>
+            <div class="label-box">SMS Texts</div>
+            <div class="label-box">Real World Events</div>
+          </div>
+
+          <!-- The Matrix Grid -->
+          <div class="matrix-grid" id="matrix">
+            <svg id="connections"></svg>
+
+            <!-- ============================================== -->
+            <!-- LONG DURATION BARS -->
+            <!-- ============================================== -->
+            <div class="duration-bar track-conrad" data-track="conrad" style="grid-column: 2 / 7; grid-row: 2;"></div>
+            <div class="duration-bar track-conrad" data-track="conrad" style="grid-column: 8 / 14; grid-row: 4;"></div>
+            <div class="duration-bar track-conrad" data-track="conrad" style="grid-column: 18 / 23; grid-row: 8;"></div>
+            
+            <div class="duration-bar track-jeremiah" data-track="jeremiah" style="grid-column: 3 / 9; grid-row: 6;"></div>
+            <div class="duration-bar track-jeremiah" data-track="jeremiah" style="grid-column: 10 / 16; grid-row: 1;"></div>
+            <div class="duration-bar track-jeremiah" data-track="jeremiah" style="grid-column: 17 / 22; grid-row: 7;"></div>
+
+
+            <!-- ============================================== -->
+            <!-- NODES: CONRAD TRACK (Exactly 13 Touchpoints)   -->
+            <!-- ============================================== -->
+            <div class="node track-conrad" style="grid-column: 2; grid-row: 1;" data-track="conrad" data-title="Viewer 1 Sees Belly's IG Drop" data-desc="You spot a cryptic 'Summer Rules' photodump on your Instagram feed posted exactly at midnight, kicking off summer.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">📱</div><div class="asset-label">IG Story</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 3; grid-row: 2;" data-track="conrad" data-title="Your FYP Serves Steven's TikTok" data-desc="Scrolling TikTok, your FYP serves you a chaotic 15-second viral video of Steven reacting to Belly's glow up at the house.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">🎬</div><div class="asset-label">TikTok Video</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 4; grid-row: 5;" data-track="conrad" data-title="You Stalk Conrad's Spotify" data-desc="After analyzing comments, you discover Conrad's 'Late Night Drive' playlist and analyze the lyrics of his newly added indie songs.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">🎧</div><div class="asset-label">Spotify Update</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 5; grid-row: 8;" data-track="conrad" data-title="You Attend the IRL Bonfire" data-desc="You score an RSVP to an experiential beach meetup in LA, witnessing an exclusive projection of Belly and Conrad's tense first encounter.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">🔥</div><div class="asset-label">Beach Event</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 7; grid-row: 4;" data-track="conrad" data-title="You Watch Jeremiah's Vlog" data-desc="You scrub through Jeremiah's 10-minute Youtube house tour vlog specifically looking for moments where Conrad is brooding in the background.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">📹</div><div class="asset-label">YouTube Vlog</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 8; grid-row: 1;" data-track="conrad" data-title="You Catch Belly's 'Accidental' Live" data-desc="You receive a notification that Belly is live, and you overhear a massive muffled argument over a sweater between the two brothers.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">🔴</div><div class="asset-label">IG Live Leak</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 10; grid-row: 7;" data-track="conrad" data-title="You Receive a Late-Night Text" data-desc="Because you opted in, your phone buzzes at 1:00 AM with an SMS directly from 'Conrad's Number' that simply says 'U up?'.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">💬</div><div class="asset-label">SMS Blast</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 12; grid-row: 6;" data-track="conrad" data-title="You Read Taylor's Hit Piece" data-desc="You click a link from Twitter to Taylor's hastily-written Substack blog, giving you all the behind-the-scenes exposition before the conflict.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">📝</div><div class="asset-label">Blog Post</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 14; grid-row: 2;" data-track="conrad" data-title="You Decode the TikTok ARG" data-desc="You team up with other superfans on TikTok to layer audio tracks from a burner account, unlocking a deleted scene of Conrad.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">🕵️</div><div class="asset-label">TikTok ARG</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 16; grid-row: 4;" data-track="conrad" data-title="You Freak Out Over the Necklace" data-desc="Your jaw drops as you watch Belly's YouTube vlog where she casually finds the iconic infinity necklace hidden in Conrad's room.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">♾️</div><div class="asset-label">YouTube Tease</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 18; grid-row: 1;" data-track="conrad" data-title="You Screenshot the IG Countdown" data-desc="You take a screenshot of Belly's heartbeat countdown sticker on Instagram and send it to your friends to build hype.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">⏱️</div><div class="asset-label">IG Sticker</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 21; grid-row: 3;" data-track="conrad" data-title="You Read the Cast's Live Tweets" data-desc="You refresh Twitter frantically as the cast livetweets their own reactions in-character right before the finale drops.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">🌟</div><div class="asset-label">Live Tweets</div></div>
+            </div>
+
+            <div class="node track-conrad" style="grid-column: 23; grid-row: 8;" data-track="conrad" data-title="You Cheer at the IRL Event" data-desc="Surrounded by 'Team Conrad' fans at a massive coordinated watch party, you watch Belly choose Conrad to complete their infinite love story.">
+              <div class="node-dot highlight"></div> <div class="asset-card up"><div class="thumbnail-placeholder">🌅</div><div class="asset-label">Finale Event</div></div>
+            </div>
+
+
+            <!-- ============================================== -->
+            <!-- NODES: JEREMIAH TRACK (Exactly 13 Touchpoints) -->
+            <!-- ============================================== -->
+            <div class="node track-jeremiah" style="grid-column: 2; grid-row: 6;" data-track="jeremiah" data-title="Viewer 2 Opens Susannah's Email" data-desc="You find a beautifully written, emotional Substack email in your inbox from Susannah, setting a deeply escapist, nostalgic tone for your morning.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">✉️</div><div class="asset-label">Substack Drip</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 3; grid-row: 1;" data-track="jeremiah" data-title="You Like Jeremiah's Empty IG" data-desc="You double-tap a sweet multiple-photo Instagram carousel capturing pure unadulterated 'golden retriever' energy and nostalgia.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">📸</div><div class="asset-label">IG Carousel</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 5; grid-row: 5;" data-track="jeremiah" data-title="You Commute to 'Summer Magic'" data-desc="You listen to the bright, optimistic playlist on Spotify during your drive home, hearing interstitial voice memos explaining why Jeremiah loves Belly.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">🎶</div><div class="asset-label">Spotify DJ</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 6; grid-row: 3;" data-track="jeremiah" data-title="You Relate to Susannah's Tweet" data-desc="You read a somber Twitter update directly addressing adult themes of motherhood that deeply resonates with your stage of life.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">🕊️</div><div class="asset-label">Twitter Update</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 9; grid-row: 1;" data-track="jeremiah" data-title="You Watch the Pool Incident" data-desc="You gasp while watching a polished Instagram Reel dropping the exact sequence where Jeremiah disrupts Belly and Conrad's kiss.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">🎆</div><div class="asset-label">IG Reel</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 10; grid-row: 6;" data-track="jeremiah" data-title="You Connect with Belly's Essay" data-desc="You read Belly's deeply conflicted, essay-style Substack diary wrestling with what safety and maturity mean in a serious relationship.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">📖</div><div class="asset-label">Substack Diary</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 12; grid-row: 8;" data-track="jeremiah" data-title="You Attend the Margaritas Preview" data-desc="You sip cocktails at an exclusive fan screening of 'The Margarita' episode, discussing the heavy emotional themes with other adult viewers.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">🍹</div><div class="asset-label">Secret Screening</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 13; grid-row: 2;" data-track="jeremiah" data-title="You Empathize with Jeremiah's POV" data-desc="You find yourself rooting for Jeremiah after he posts a heartfelt, direct-to-camera TikTok breaking down his deeply rooted insecurities.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">💔</div><div class="asset-label">TikTok Confession</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 15; grid-row: 8;" data-track="jeremiah" data-title="You Experience the IRL Deb Ball" data-desc="Having won an email scavenger hunt, you dress up and attend a massive, immersive recreation of the show's Deb Ball in NYC.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">💃</div><div class="asset-label">Immersive Event</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 18; grid-row: 6;" data-track="jeremiah" data-title="You Cry Reading the Final Letter" data-desc="You wipe a tear reading the final Substack drop before the finale: a crushing letter about choosing joy and loving wildly.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">💌</div><div class="asset-label">Final Letter</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 19; grid-row: 1;" data-track="jeremiah" data-title="You Support 'Choose Joy'" data-desc="You actively comment and participate in the coordinated Instagram push emphasizing the positive, mature 'Team Jeremiah' themes of safety.">
+              <div class="node-dot"></div> <div class="asset-card up"><div class="thumbnail-placeholder">☀️</div><div class="asset-label">IG Push</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 21; grid-row: 4;" data-track="jeremiah" data-title="You Keep the 12-Hour Vlog Open" data-desc="You keep the 'Day in the Life of Cousins Beach' YouTube premiere running on your second monitor as comfort noise all day while working from home.">
+              <div class="node-dot"></div> <div class="asset-card down"><div class="thumbnail-placeholder">📺</div><div class="asset-label">YouTube Premiere</div></div>
+            </div>
+
+            <div class="node track-jeremiah" style="grid-column: 23; grid-row: 8;" data-track="jeremiah" data-title="You Find Closure in the Finale" data-desc="Watching from your couch, you feel validated when Belly opts for safety; choosing the boy who was always there to provide a healthy, beautiful conclusion.">
+              <div class="node-dot highlight"></div> <div class="asset-card up"><div class="thumbnail-placeholder">🌼</div><div class="asset-label">The Finale</div></div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Time Axis Anchors -->
+          <div class="bottom-time-axis">
+            <div class="time-marker" style="grid-column: 3;">Early June</div>
+            <div class="time-marker" style="grid-column: 9;">Mid July</div>
+            <div class="time-marker" style="grid-column: 15;">Late August</div>
+            <div class="time-marker" style="grid-column: 23;">Labor Day</div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+/* style.css - Transmedia Matrix Layout */
+:root {
+  --bg-dark: #faf9f6;
+  --sidebar-bg: #ffffff;
+  --border-color: #eaeaea;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  
+  --conrad-color: #2563eb;
+  --conrad-glow: rgba(37, 99, 235, 0.2);
+  
+  --jeremiah-color: #ea580c;
+  --jeremiah-glow: rgba(234, 88, 12, 0.2);
+  
+  --act-bg: #f3f4f6;
+  --grid-line: #f0f0f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  /* The entire window should scroll natively now */
+}
+
+/* Giant Storyboard Canvas */
+.canvas-board {
+  min-height: 100vh;
+  width: max-content;
+  min-width: 100vw;
+  background: 
+    linear-gradient(rgba(240, 240, 240, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 240, 240, 0.5) 1px, transparent 1px);
+  background-size: 50px 50px; /* Graph paper texture */
+  padding: 6rem;
+}
+
+.board-flow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+/* Player Column */
+.player-column {
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 6rem; /* Push down to align with rows */
+}
+
+/* Player Cards Updates */
+.player-card {
+  border-radius: 36px;
+  padding: 2.5rem;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+}
+
+.conrad-card { border: 5px solid #ff007f; }
+.jeremiah-card { border: 5px solid #8c00ff; }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center top;
+  border: 4px solid var(--bg-dark);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.player-card:hover .avatar {
+  transform: scale(1.1);
+}
+
+.card-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.player-card::after {
+  content: '👆 Click to focus track';
+  display: block;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.player-card:hover::after {
+  opacity: 1;
+  color: var(--text-dark);
+}
+
+.player-card.inactive { opacity: 0.4; filter: grayscale(80%); }
+
+.card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stat {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #4a5568;
+}
+
+.stat .label {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.btn-reset {
+  margin-top: 1rem;
+  padding: 1.2rem;
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-reset:hover {
+  background-color: var(--bg-dark);
+  border-color: var(--text-muted);
+}
+
+/* Matrix Area Wrapper */
+.matrix-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Board adjustments */
+.board {
+  position: relative;
+}
+
+/* Time Headers (Acts) */
+.time-headers {
+  display: grid;
+  grid-template-columns: repeat(30, 80px);
+  margin-left: 140px; /* Offset for row labels */
+  margin-bottom: 2rem;
+}
+
+.act-header {
+  background: var(--act-bg);
+  padding: 0.8rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin: 0 10px;
+}
+
+/* Grid Container */
+.grid-container { display: flex; position: relative; }
+
+/* Row Labels (Platforms) */
+.row-labels {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.label-box {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1.5rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-right: 2px dashed var(--border-color);
+  background: var(--bg-dark);
+}
+
+/* The Matrix Grid */
+.matrix-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(30, 80px);
+  grid-template-rows: repeat(8, 80px);
+  width: max-content;
+}
+
+/* Bottom Time Axis */
+.bottom-time-axis {
+  display: grid;
+  grid-template-columns: repeat(30, 80px);
+  margin-left: 140px;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.time-marker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  position: relative;
+  padding-top: 10px;
+}
+
+.time-marker::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; width: 1px; height: 5px;
+  background: var(--text-muted);
+}
+
+/* SVG Connection canvas */
+#connections {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.svg-path-conrad, .svg-path-jeremiah {
+  stroke-width: 3;
+  fill: none;
+  stroke-dasharray: 10000;
+  stroke-dashoffset: 10000;
+  animation: drawLine 3s ease forwards;
+}
+
+.svg-path-conrad { stroke: var(--conrad-color); }
+.svg-path-jeremiah { stroke: var(--jeremiah-color); }
+
+/* Droplines Drop down to Time Axis */
+.svg-dropline {
+  stroke: var(--border-color);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  fill: none;
+  z-index: 0;
+}
+.svg-dropline.active-conrad { stroke: var(--conrad-glow); stroke-width: 2; }
+.svg-dropline.active-jeremiah { stroke: var(--jeremiah-glow); stroke-width: 2; }
+
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+/* Duration Bars */
+.duration-bar {
+  opacity: 0.7;
+  border-radius: 4px;
+  margin: 15px 0; /* Centers it within 80px row since bar is 50px */
+  height: 50px;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.duration-bar.track-conrad {
+  background: var(--conrad-glow);
+  border: 1px solid var(--conrad-color);
+}
+
+.duration-bar.track-jeremiah {
+  background: var(--jeremiah-glow);
+  border: 1px solid var(--jeremiah-color);
+}
+
+.duration-bar.inactive { opacity: 0; }
+.duration-bar.active { opacity: 0.9; }
+
+/* Nodes */
+.node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.node.inactive { opacity: 0.2; transition: opacity 0.3s; }
+.node.active { opacity: 1; transition: opacity 0.3s; }
+
+.node-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid;
+  z-index: 3;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.8);
+  transition: transform 0.2s;
+}
+
+.node:hover .node-dot { transform: scale(1.5); }
+
+.node-dot.highlight { width: 22px; height: 22px; }
+
+.track-conrad .node-dot { border-color: var(--conrad-color); }
+.track-jeremiah .node-dot { border-color: var(--jeremiah-color); }
+
+/* Asset Cards */
+.asset-card {
+  position: absolute;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  width: 120px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 1px solid var(--border-color);
+  pointer-events: none;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.asset-card.up {
+  bottom: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.asset-card.down {
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.node:hover .asset-card.up {
+  opacity: 1;
+  bottom: calc(100% + 15px);
+}
+
+.node:hover .asset-card.down {
+  opacity: 1;
+  top: calc(100% + 15px);
+}
+
+.thumbnail-placeholder {
+  width: 100%;
+  height: 60px;
+  background-color: #f4f4f5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #a1a1aa;
+}
+
+.asset-label {
+  font-size: 0.70rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+.modal-content {
+  background: white; width: 90%; max-width: 450px;
+  border-radius: 12px; padding: 2.5rem 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  position: relative;
+  transform: translateY(20px); transition: transform 0.3s ease;
+  border-top: 6px solid var(--conrad-color); 
+}
+
+.modal-overlay.open .modal-content { transform: translateY(0); }
+.modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-muted); }
+
+.modal-tag {
+  display: inline-block; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 1px; font-weight: 700; padding: 4px 10px;
+  border-radius: 20px; margin-bottom: 0.8rem; background: #f0f0f0;
+}
+
+.modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-dark); }
+.modal-body { font-size: 1rem; line-height: 1.6; color: var(--text-muted); }
