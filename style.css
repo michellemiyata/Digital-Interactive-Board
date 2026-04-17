@@ -71,11 +71,11 @@ body {
 }
 
 .conrad-card {
-  border: 5px solid #ff007f;
+  border: 5px solid var(--conrad-color);
 }
 
 .jeremiah-card {
-  border: 5px solid #8c00ff;
+  border: 5px solid var(--jeremiah-color);
 }
 
 .card-header {
@@ -465,6 +465,7 @@ body {
 .node.inactive {
   opacity: 0.2;
   transition: opacity 0.3s;
+  pointer-events: none;
 }
 
 .node.active {
